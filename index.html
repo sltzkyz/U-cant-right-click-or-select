@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parallax Star Background</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css">
+
+    <!--RİGHT CLICK LOCK-->
+    <SCRIPT LANGUAGE="Javascript">
+        var isNS = (navigator.appName == "Netscape") ? 1 : 0;
+        var EnableRightClick = 0;
+        if(isNS)
+        document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
+        function mischandler(){
+        if(EnableRightClick==1){ return true; }
+        else {return false; }
+        }
+        function mousehandler(e){
+        if(EnableRightClick==1){ return true; }
+        var myevent = (isNS) ? e : event;
+        var eventbutton = (isNS) ? myevent.which : myevent.button;
+        if((eventbutton==2)||(eventbutton==3)) return false;
+        }
+        function keyhandler(e) {
+        var myevent = (isNS) ? e : window.event;
+        if (myevent.keyCode==96)
+        EnableRightClick = 1;
+        return;
+        }
+        document.oncontextmenu = mischandler;
+        document.onkeypress = keyhandler;
+        document.onmousedown = mousehandler;
+        document.onmouseup = mousehandler;
+    </script>
+    <!--RİGHT CLICK LOCK-->
+</head>
+<body onkeydown="return false"><!--if you change this to false then you blocked all keys like "Ctrl+C","F11","Ctrl+U","TAB","F5"-->
+    <section class="wrapper">
+        <div id="title">
+            <span>u can't right click</span>
+            <br>
+            <span>or select</span>
+        </div>
+    </section>
+</body>
+</html>
